@@ -23,11 +23,11 @@ Occasionally something completely off-topic, because a blog that only contains w
 
 ## The workflow
 
-This site is built with Claude code, using [Astro](https://astro.build) and deployed to GitHub Pages. Keep steps in creating a website is:
+This site is built with Claude code, using [Astro](https://astro.build) and deployed to GitHub Pages. Kep steps in creating this website is:
 
-1. Create a repo and set up a blog template with Astro
+1. Create a repo and set up blog templates with Astro
 2. Create a github repo and configure Astro for GitHub Pages
-3. Enable GitHub Pages and GitHub Action
+3. Enable GitHub Pages and GitHub Action for build and deploy.
 
 That's it. I wanted something where the activation energy of publishing was as low as possible, because the gap between *I have a thought* and *I post the thought* is where most writing goes to die.
 
