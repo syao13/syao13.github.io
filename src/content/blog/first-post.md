@@ -23,7 +23,7 @@ Occasionally something completely off-topic, because a blog that only contains w
 
 ## The workflow
 
-This site is built with Claude code, using [Astro](https://astro.build) and deployed to GitHub Pages. Kep steps in creating this website is:
+This site is built with Claude code, using Astro and deployed to GitHub Pages. Kep steps in creating this website is:
 
 1. Create a repo and set up blog templates with Astro
 2. Create a github repo and configure Astro for GitHub Pages
