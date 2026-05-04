@@ -2,7 +2,7 @@
 title: 'Why I Finally Made a Site'
 description: 'On the tension between writing for yourself and writing for an audience you keep imagining.'
 pubDate: '2026-04-25'
-heroImage: '../../assets/blog-placeholder-1.jpg'
+heroImage: '../../assets/first_post.jpg'
 ---
 
 I've started personal sites three times before this one. Each time I spent most of the energy on the setup and very little on the writing, which is the thing that was supposed to matter.
@@ -17,13 +17,13 @@ Notes to future me, mostly. But if they're useful to someone else, that's a bonu
 
 ## What I expect to write about
 
-Mostly technical things — statistics, machine learning, computational biology, the specific frustrations of working with clinical data. Sometimes the meta-level: how I think about problems, what I've changed my mind about, what's harder than it looked.
+Mostly technical things — data science, machine learning, computational biology, the specific frustrations of working with clinical data. Sometimes the meta-level: how I think about problems, what I've changed my mind about, what's harder than it looked.
 
 Occasionally something completely off-topic, because a blog that only contains work thoughts starts to feel like a performance review.
 
-## The workflow
+## How did I build this site
 
-This site is built with Claude code, using Astro and deployed to GitHub Pages. Kep steps in creating this website is:
+This site is built with help from Claude code, using Astro and deployed to GitHub Pages. Kep steps in creating this website is:
 
 1. Create a repo and set up blog templates with Astro
 2. Create a github repo and configure Astro for GitHub Pages
