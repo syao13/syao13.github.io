@@ -5,32 +5,32 @@ pubDate: '2026-05-03'
 heroImage: '../../assets/graph_view.png'
 ---
 
-The LLM wiki by Andrej Karpathy has been gaining a lot of traction, [link](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f). The core idea is to use llm to incrementally index, organize, query, and maintain a persistent wiki. [add more here]
+The [LLM wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) by Andrej Karpathy has been gaining a lot of traction. The core idea is to use an LLM to incrementally index, organize, query, and maintain a persistent wiki. Unlike a static document dump or a typical RAG setup, the output is a structured, human-readable knowledge base that grows alongside your understanding.
 
-The approach is very interesting in that you are now using llm to interact with your knowledge base dynamically. [add more here] 
+The interesting part is that you're using an LLM to interact with your knowledge base dynamically — not just retrieving answers, but actively reorganizing and extending what's there. Ask a good question, and the answer becomes part of the wiki. The knowledge base compounds.
 
-So I decided to give this a try, using gene ACTN3 and rs1815739 variant as an example.
+So I decided to give this a try, using the ACTN3 gene and the rs1815739 variant as an example.
 
-## Colloect raw data
+### Collect raw data
 
-To get started, I need to collect some information on the gene first. I started with google search of the gene and downloaded a few papers that's the top hit. If you have an existing projct with many papers, slides, notebooks, etc. already, just collect everything into a folder. 
+To get started, I need to collect some information on the gene first. I started with a Google search and downloaded a few of the top papers. If you already have an existing project with papers, slides, notebooks, etc., just collect everything into a folder.
 
-## Initiate the llm wiki
+### Initiate the llm wiki
 
-The original llm-wiki blog post has clear instrunction and enough background information aleady, which can be directly used by your coding agent to follow as a set of rules. So to start I simply copied the markdown file to the project root folder.
+The original llm-wiki post has clear instructions and enough background information already, which can be directly used by your coding agent as a set of rules. So to start I simply copied the markdown file to the project root folder.
 
 ```
-project-root/
+ACTN3/
 ├── raw/
 │   ├── xxx.pdf
 │   └── ...
 └── llm-wiki.md
 ```
 
-For Clause, run `/init` under the root folder, and Claude easily understood the purpose of the project and rewrote it as a project specific guideline. 
+For Claude, run `/init` under the root folder, and Claude easily understood the purpose of the project and rewrote it as a project-specific guideline.
 
 ```
-project-root/
+ACTN3/
 ├── raw/
 │   ├── xxx.pdf
 │   └── ...
@@ -38,13 +38,13 @@ project-root/
 └── llm-wiki.md
 ```
 
-## Indexing your intial raw files
+### Indexing your initial raw files
 
-After that, run `Ingest` or a more specific instruction prompt in Claude, and you will get an organized wiki folder with a overview page and relevant entity, source, and concept pages across the wiki.
+After that, run `Ingest` or a more specific prompt in Claude, and you'll get an organized wiki folder with an overview page and relevant entity, source, and concept pages.
 
 
 ```
-project-root/
+ACTN3/
 ├── CLAUDE.md
 ├── llm_wiki.md
 ├── folder-structure.md
@@ -66,16 +66,19 @@ project-root/
     │   └── ...
 ```
 
-## Visulize your wiki
+### Visualize your wiki
 
-[Obsidian](https://obsidian.md/) is what made this wiki magical. Since this wiki is made of interlinked markdown files, you can open the wiki folder as a vault in Obsidian and check the graph view for all the connections between concept. 
+[Obsidian](https://obsidian.md/) is what made this wiki feel real. Since the wiki is just interlinked markdown files, you can open the wiki folder as a vault in Obsidian and check the graph view for all the connections between concepts, entities, and sources. 
 
-![Alt text](../../assets/graph_view.png)
+<div style="display: flex; gap: 1rem;">
+  <img src="/assets/obsidian_structure.png" alt="Obsidian folder structure" style="width: 30%; height: 450px; object-fit: contain; object-position: top left;" />
+  <img src="/assets/graph_view.png" alt="Obsidian graph view" style="flex: 1; height: 450px; object-fit: contain;" />
+</div>
 
-## Enrich your wiki
+### Enrich your wiki
 
-As you add more documents to the raw folder and have your coding agent to `Ingest` again. But a more insterting way of adding to your wiki is `Query` your wiki using your coding agent. Good questons and answers can be added back to the wiki and become part of the knowledge base. 
+As you add more documents to the raw folder, have your coding agent `Ingest` again. But the more interesting way to grow the wiki is to `Query` it. Good questions and answers get added back and become part of the knowledge base.
 
-## Summary
+### Summary
 
-LLM makes building the wiki easy, but to make sense of the information collected and presented is more crucial than ever. We are not building the tool just to build it, we are building the tool so we can understand the science behind it and advance it in any way possible. [add more here]
+LLM makes building the wiki easy, but making sense of what's collected is more crucial than ever. We're not building the tool just to build it — we're building it so we can actually understand the science and push it forward. The LLM can organize and connect the dots, but the understanding still has to come from you.
