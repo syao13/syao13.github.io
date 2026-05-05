@@ -23,7 +23,7 @@ Occasionally something completely off-topic, because a blog that only contains w
 
 ## How did I build this site
 
-This site is built with help from Claude code, using Astro framework and deployed to GitHub Pages. Key steps in creating this website is:
+This site is built with help from Claude, using Astro framework and deployed to GitHub Pages. Key steps in creating this website is:
 
 1. Create a repo and set up blog templates with Astro
 2. Create a github repo and configure Astro for GitHub Pages
