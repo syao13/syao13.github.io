@@ -1,5 +1,5 @@
 ---
-title: 'Literature Review in the AI era'
+title: 'Literature Review and Paper Search in the AI Era'
 description: 'From manual PubMed searches to AI agents - new ways to gather raw research materials, and what actually works.'
 pubDate: '2026-05-20T12:00:00'
 heroImage: '../../assets/03_literature_reviews/cover.png'
