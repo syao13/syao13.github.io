@@ -1,13 +1,13 @@
 ---
 title: 'GeneSnap: What Happens When You Actually Look at Your 23andMe Data'
-description: ''
+description: 'I built a tool to cross-reference my 23andMe raw data against clinical databases - here is how it works.'
 pubDate: '2026-06-04T12:00:00'
 heroImage: '../../assets/04_genesnap/genesnap_background.png'
 ---
 
-If you are like me, got a genetic testing like 23andme before you know better, you are not alone. But what did they say, when life give you lemon, make lemonade. Or even better, make a lemon cake, then have it, eat it, and even share it with everyone. 
+If you got consumer genetic tests like 23andMe before you knew better, you are not alone. But as they say — when life gives you lemons, make lemonade. Or better yet, make a lemon cake and share it with everyone.
 
-I have deleted my account and requested to deleted my data with 23andme, but before deleting I also exported the raw data - a plain text file with ~600k rows, one per genetic position they tested. And most people never open it.
+I deleted my account and requested deletion of my data, but before doing that I exported the raw file — a plain text file with ~600k rows, one per genetic position they tested. And most people never open it.
 
 GeneSnap is a side project I built to change that. You drop in your raw 23andMe file, and in a few seconds it tells you which of your variants actually matter — flagged against reputable clinical databases, categorized by type, and linked to the research papers behind each finding.
 
@@ -17,9 +17,9 @@ Let me walk you through what it does and how it works.
 
 ## Why Build This?
 
-23andMe's analysis was basic, you get your ancestry stuff, and you then have to pay extra for any additional health information. And even if you paied the extra, it shows you a curated slice of your data and soft-pedals anything medically significant. There are good reasons for that — liability, regulatory constraints, the fact that most users don't want to be alarmed — but it means a lot of the interesting stuff gets buried or glossed over.
+23andMe's default analysis is pretty basic - you get your ancestry breakdown, and then have to pay extra for any health information on top of that. And even if you paid for it, what you get is a curated slice of your data that soft-pedals anything medically significant. There are understandable reasons for that - liability, regulatory constraints, the fact that most users don't want to be alarmed - but it means a lot of the interesting stuff gets buried or glossed over.
 
-The raw export is different. It's a tab-delimited file of every SNP (single nucleotide polymorphism) they genotyped — roughly 600,000 to 950,000 positions depending on your chip version. Each row is an rsID (a standard identifier like `rs6025`), a chromosome, a position, and your two-letter genotype.
+The raw export is different. It's a tab-delimited file of every SNP (single nucleotide polymorphism) they genotyped — roughly 600k to 950k positions depending on your chip version. Each row is an rsID (a standard identifier like `rs6025`), a chromosome, a position, and your two-letter genotype.
 
 There's nothing stopping you from cross-referencing that against ClinVar, the GWAS Catalog, PharmGKB, and other public databases yourself. GeneSnap just automates that.
 
@@ -41,7 +41,7 @@ GeneSnap organizes results into three buckets:
 
 ## Building the Variant Database
 
-The most labour-intensive part of GeneSnap isn't the analysis — it's building the reference database that analysis runs against. There are three source pipelines, each pulling from a different public database and applying its own filters before variants land in SQLite.
+The most labor-intensive part of GeneSnap isn't the analysis — it's building the reference database that analysis runs against. There are three source pipelines, each pulling from a different public database and applying its own filters before variants land in SQLite.
 
 ### ClinVar
 
@@ -55,7 +55,7 @@ After filtering: ~85,600 variants, mostly health risk and pharmacogenomics.
 
 ### GWAS Catalog
 
-The GWAS Catalog is EBI's curated collection of genome-wide association study results. The full associations file has ~500,000 rows. Filters:
+The GWAS Catalog is EBI's curated collection of genome-wide association study results. The full associations file has ~500k rows. Filters:
 
 - **p-value:** p < 5×10⁻⁸ (the standard genome-wide significance threshold)
 - **Sample size:** ≥ 1,000 participants in the initial cohort — removes underpowered studies
@@ -65,7 +65,7 @@ The GWAS Catalog is EBI's curated collection of genome-wide association study re
 
 One extra step: if the reported OR < 1.0 (the "risk allele" is actually protective), alleles are swapped and the OR is inverted — so the database always stores the risk-increasing allele consistently.
 
-After filtering: ~249,000 variants, skewing heavily toward traits and disease associations.
+After filtering: ~249k variants, skewing heavily toward traits and disease associations.
 
 ### PharmGKB
 
@@ -78,7 +78,7 @@ After filtering: ~650 variants, all pharmacogenomics.
 ```mermaid
 flowchart TD
     A["ClinVar VCF · GRCh37\n~1M total variants"] -->|"pathogenic / LP / drug_response\n≥ 2 review stars\nsingle rsID, no conflicting interp"| B["85,600 variants"]
-    C["GWAS Catalog\n~500K association rows"] -->|"p < 5×10⁻⁸\nsample ≥ 1,000\nsingle rsID, known risk allele\ndedup by rsID"| D["249,000 variants"]
+    C["GWAS Catalog\n~500K association rows"] -->|"p < 5×10⁻⁸\nsample ≥ 1,000\nsingle rsID, known risk allele\ndedup by rsID"| D["249k variants"]
     E["PharmGKB\nclinical_annotations.tsv"] -->|"CPIC Level 1A / 1B\nsingle allele or star allele\nstar allele → rsID lookup"| F["650 variants"]
 
     B --> G[("SQLite · variants table\n334,566 total")]
@@ -121,7 +121,7 @@ Breaking that down:
 - `clinvar_stars` is ClinVar's review status (0–4), where more stars means more expert review
 - `odds_ratio` is the effect size from GWAS data — how much more likely you are to have a trait if you carry the risk allele. If it's missing (common for ClinVar-only entries), it defaults to 1.0
 
-The specific numbers (10, 8, 5, 4, 2) and weight are educated guesses, not calibrated against any ground truth - it just determines the sort order within each risk tier. High-risk variants float to the top; within the same risk level, stronger evidence comes first.
+The specific weights (10, 8, 5, 4, 2) are educated guesses, not calibrated against any ground truth — the score isn't shown to users, it just determines sort order within each risk tier. High-risk variants float to the top; within the same risk level, stronger evidence comes first.
 
 The odds ratio itself comes directly from the GWAS Catalog import, not calculated from scratch. One normalization step: if the raw OR < 1.0 (meaning the tested allele is *protective*, not risky), the alleles are swapped and the OR is inverted so the "risk allele" always has OR ≥ 1.
 
@@ -143,7 +143,7 @@ On-demand enrichment — ClinVar details, PubMed papers, Ensembl annotations —
 
 ## Running It
 
-I have commited the code in my github repo, [GeneSnap](https://github.com/syao13/GeneSnap), feel free to check it out. It is also intentional that the uploaded data will NOT be stored anywhere, it runs the search, and then gets disgarded. 
+The code is on GitHub — [GeneSnap](https://github.com/syao13/GeneSnap) — feel free to check it out. One thing I want to be explicit about: uploaded data is never stored. It runs the analysis and gets discarded immediately.
 
 When you first start the app, you will see this landing page.
 
@@ -163,7 +163,7 @@ And for each identified gene, you can click on it to learn more.
 
 The curated variant database is the main thing that needs ongoing work — there are hundreds of well-characterized variants that aren't in yet. Support for AncestryDNA's raw export format is also on the list. Polygenic risk scores (combining many small-effect variants into a single aggregate number) and population stratification are some of the longer-term ideas, though they come with their own statistical and ethical complexity. 
 
-For now, if you have your 23andme raw data, or can still download your raw data, give it a try. The file is under your account settings — it's just a text file, and you might be surprised what's in there.
+For now, if you have your 23andMe raw data — or can still download it — give it a try. The file is under your account settings. It's just a text file, and you might be surprised what's in there.
 
 ---
 
