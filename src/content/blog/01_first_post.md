@@ -2,7 +2,7 @@
 title: 'Why I Finally Made a Site'
 description: 'On the tension between writing for yourself and writing for an audience you keep imagining.'
 pubDate: '2026-04-25'
-heroImage: '../../assets/first_post/first_post.jpg'
+heroImage: '../../assets/first_post/first_post.png'
 ---
 
 I've started personal sites three times before this one. Each time I spent most of the energy on the setup and very little on the writing, which is the thing that was supposed to matter.
