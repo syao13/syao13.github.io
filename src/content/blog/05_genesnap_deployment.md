@@ -1,8 +1,8 @@
 ---
 title: 'How I deployed GeneSnap to Vercel'
-description: "A walkthrough of deploying my 23andMe analyzer app to Vercel — why I ignored Claude's advice, how early tech choices shape deployment options, and that understanding debt is real."
+description: "A walkthrough of deploying my 23andMe analyzer app to Vercel: why I ignored Claude's advice, how early tech choices shape deployment options, and that understanding debt is real."
 pubDate: '2026-06-17T12:00:00'
-heroImage: '../../assets/04_genesnap/genesnap_background.png'
+heroImage: '../../assets/05_genesnap_deployment/live.png'
 ---
 
 In my last blog post I built a web app that can analyze your 23andMe raw data results. This time I'll walk through how I got it deployed. You can check it out live at https://www.genesnap.net/.
