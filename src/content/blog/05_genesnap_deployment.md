@@ -5,7 +5,7 @@ pubDate: '2026-06-17T12:00:00'
 heroImage: '../../assets/05_genesnap_deployment/live.png'
 ---
 
-In my last blog post I built a web app that can analyze your 23andMe raw data results. This time I'll walk through how I got it deployed. You can check it out live at https://www.genesnap.net/.
+In my last blog post I built a web app that can analyze your 23andMe raw data results. This time I'll walk through how I got it deployed. You can check it out live at [https://www.genesnap.net/](https://www.genesnap.net/).
 
 As anyone who programs would do nowadays, I asked Claude Code for help. My first ask was simple: recommend a hosting service based on my tech stack. Here's what it came up with:
 
