@@ -17,11 +17,11 @@ So I started investigating. Google searches, Reddit threads, asking Claude to cl
 
 ![Claude walking through the Vercel implementation](../../assets/05_genesnap_deployment/claude_implementation.png)
 
-And once I am determined on the direction, Claude then not surpurisingly  was able to quickly help me make it happen. Here are the options Claude laid out for me:
+And once I had settled on a direction, Claude unsurprisingly was quick to help me make it happen. Here are the options Claude laid out for me:
 
 ![Claude's deployment options](../../assets/05_genesnap_deployment/claude_options.png)
 
-After I committed to a path, Option A if you must know, Claude was genuinely excellent at walking me through the operational side — which Vercel settings to configure, how to set up environment variables, debugging deployment errors, and getting everything live. It felt like a breeze.
+After I committed to a path — Option A, if you must know — Claude was genuinely excellent at walking me through the operational side — which Vercel settings to configure, how to set up environment variables, debugging deployment errors, and getting everything live. It felt like a breeze.
 
 ## How your early tech choices ripple into deployment
 
@@ -33,7 +33,7 @@ This is worth keeping in mind if you're starting a new project: the stack decisi
 
 ## From tech debt to understanding debt
 
-I deployed GeneSnap and wrote this post about two weeks ago, and I deliberately held off publishing until I went back and actually understood what the code, configs, and deployment settings were doing, not just that they worked.
+I deployed GeneSnap about two weeks before writing this, and I deliberately held off publishing until I went back and actually understood what the code, configs, and deployment settings were doing, not just that they worked.
 
 This is something I've been thinking about as AI-assisted coding becomes the default: the new liability isn't just tech debt. It's **understanding debt**. When a coding agent handles the boilerplate, the configuration, and the integration glue, it's easy to end up with a working app you don't fully understand. And that's fine for getting something shipped — but the moment something breaks, or needs to change, or you just want to explain it to someone, that gap shows up fast.
 
