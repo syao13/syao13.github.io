@@ -1,8 +1,8 @@
 ---
-title: 'Is Attention Really All You Need?'
+title: 'Is Attention All You Need?'
 description: 'The Narrow Track of Attention and the Vanishing of Pure Consciousness'
 pubDate: '2026-07-04T12:00:00'
-heroImage: '../../assets/04_genesnap/genesnap_background.png'
+heroImage: '../../assets/06_attention/laying_in_grass.png'
 ---
 
 I was taking a walk and listening to a podcast when a message came in. I meant to keep listening while I read it, but within seconds the audio had dissolved into white noise: a constant, meaningless hum. My eyes were on the text, and the part of my mind that turns sound into language had quietly gone offline.
