@@ -13,7 +13,7 @@ That choice is the interesting part. It's the same kind of call as Claude Code s
 
 The first thing I tried was rebuilding the analysis and results from a published paper. I've wanted a tool like this for a while: hand it any paper, have it rerun the analysis, and use that to actually understand the work.
 
-I picked a paper I tried to reproduce 2 years ago. The original was all in R, and back then I wanted to redo the whole thing in Python. The authors shared their data and that made it possible (credit to them). It took me about 2 weeks back then, [github link](https://github.com/syao13/fibrosis-progression-deseq2).
+I picked a paper I tried to reproduce 2 years ago. The original was all in R, and back then I wanted to redo the whole thing in Python. The authors shared their data and that made it possible (credit to them). It took me about 2 weeks at the time, [github link](https://github.com/syao13/fibrosis-progression-deseq2).
 
 <div style="text-align: center; width: 75%; margin: 0 auto;">
 
@@ -21,7 +21,7 @@ I picked a paper I tried to reproduce 2 years ago. The original was all in R, an
 
 </div>
 
-The first snag was small and annoying. Getting the paper into the tool was slow, even with every connector turned on. My guess is the publisher wasn't one of the big ones Claude Science handles smoothly. It couldn't pull the open-access PDF straight from the page, and it couldn't get the full text.
+The first snag was small and annoying. Getting the paper into the tool was slow, even with every connector turned on. It tried a number of different ways, PMC XML, BioStudies FTP, direct download, and etc, but everything return abstract only. My guess is the publisher wasn't one of the big ones Claude Science handles smoothly. It couldn't pull the open-access PDF straight from the page, and it couldn't get the full text.
 
 So on the first pass, it rebuilt the paper's whole analysis from the abstract alone. Not the full paper. The abstract. One paragraph in, and the output still looked plausible. That should give you pause.
 
@@ -65,7 +65,7 @@ One of the main goals of the tool is to produce papers, so naturally the artifac
 
 ## Cost
 
-It's pricey. That one paper rebuild, about 15 minutes of work, drained roughly half my session limit. For a single section in a single session, that adds up fast. Anything with a lot of back-and-forth, which is most real research, is going to hit the ceiling quickly.
+It's pricey. That one paper rebuild, about 15 minutes of work, drained roughly half my session limit. For comparison, it normally takes 30min-1hr of Claude Code run to use that amount, which is good for a big feature or a couple of small ones. For a single section in a single session, that adds up fast. Anything with a lot of back-and-forth, which is most real research, is going to hit the ceiling quickly.
 
 ## Open source, and the bigger question
 
